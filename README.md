@@ -9,7 +9,7 @@ In this project, I'm analyzing what factors can affect the official mentions-rep
 This project aims to find out underlying factors of number countries' offical mentions. By combibining-analyzing relevant data sources together, I want to explore what contributes to countires'
 reports by another countries.
 
-# Data Sources To Be Used 
+# Data Sources To Be Used (subject to change for now)
 
 The main source of data is the 	Diplomatic text dataset from GlobalDiplomacyNet project (https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi%3A10.7910/DVN/HYJDE0)
 
@@ -18,7 +18,7 @@ Other sources that I want to combine with this dataset is
 2) Democracy index by country dataset -- > again from kaggle (https://www.kaggle.com/datasets/shreyasur965/democracy-index)
 3) Fragile States Index --> from Fragile States Index website ( https://fragilestatesindex.org/global-data/)
 
-# Main Hypotheses To Be Tested 
+# Main Hypotheses To Be Tested (subject to change for now)
 
 H1 : There is a relation between GDP of a country and number of mentions of country by other countries.
 
