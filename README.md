@@ -26,4 +26,4 @@ H2 : There is a relation between Democracy index of a country and number of ment
 
 H3 : There is a relation between Fragile States Index of a country and number of mentions of country by other countries.
 
-H4 : A country's entry into war increased that countries' mention number by another countries.
+H4 : There is a relation between military power of a country and number of mentions of country by other countries.
