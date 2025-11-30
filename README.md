@@ -23,7 +23,7 @@ Other sources combined with this dataset:
 
 
 
-# Main Hypotheses /n
+# Main Hypotheses 
 H1 : There is a relation between **GDP** of a country and number of mentions of country by other countries.
 H2 : There is a relation between **Democracy index** of a country and number of mentions of country by other countries.
 H3 : There is a relation between **Military power** of a country and number of mentions of country by other countries.
