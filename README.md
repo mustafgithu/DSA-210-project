@@ -21,7 +21,7 @@ Other sources combined with this dataset:
      * https://www.kaggle.com/datasets/hanif13/global-firepower-2023
      * https://www.kaggle.com/datasets/chayanonc/military-strength-by-country-2024
 
-*(Note: Fragile States Index was initially considered but excluded from the final analysis to focus on Hard vs. Soft power dynamics.)*
+
 
 # Main Hypotheses
 H1 : There is a relation between **GDP** of a country and number of mentions of country by other countries.
