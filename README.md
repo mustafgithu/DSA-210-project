@@ -15,7 +15,7 @@ The main source of data is the 	Diplomatic text dataset from GlobalDiplomacyNet 
 
 Other sources that I want to combine with this dataset is 
 1) GDP by country dataset --> from Our World in Data   https://ourworldindata.org/grapher/gdp-worldbank-constant-usd
-2) Democracy index by country dataset -- > again from kaggle  https://www.kaggle.com/datasets/shreyasur965/democracy-index
+2) Democracy index by country dataset -- > from kaggle  https://www.kaggle.com/datasets/shreyasur965/democracy-index
 3) Fragile States Index --> from Fragile States Index website   https://fragilestatesindex.org/global-data/
 4) Military Ranking --> from Global Firepower Index main page https://www.globalfirepower.com/countries-listing.php
      Note : In official website, now there is only 2025 data for all countries (it is updated every year). Other sources were used to get all countries from some previous years:
