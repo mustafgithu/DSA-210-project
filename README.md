@@ -21,12 +21,10 @@ Other sources combined with this dataset:
      * https://www.kaggle.com/datasets/hanif13/global-firepower-2023
      * https://www.kaggle.com/datasets/chayanonc/military-strength-by-country-2024
 
-
-
 # Main Hypotheses 
-H1 : There is a relation between **GDP** of a country and number of mentions of country by other countries.
-H2 : There is a relation between **Democracy index** of a country and number of mentions of country by other countries.
-H3 : There is a relation between **Military power** of a country and number of mentions of country by other countries.
+* **H1:** There is a relation between **GDP** of a country and number of mentions of country by other countries.
+* **H2:** There is a relation between **Democracy index** of a country and number of mentions of country by other countries.
+* **H3:** There is a relation between **Military power** of a country and number of mentions of country by other countries.
 
 # Methodology
 ## 1. Data Processing
@@ -42,14 +40,19 @@ H3 : There is a relation between **Military power** of a country and number of m
 Scatter plots (Log-Log scale) revealed clear linear trends for **Military Power** and **GDP** vs. Frequency, while Democracy showed a widely dispersed, weak relationship.
 
 ## 2. Hypothesis Testing
-Using **Spearman Rank Correlation** (to handle outliers like USA/China):
+To rigorously determine the drivers of news coverage, we performed two types of statistical tests.
+
+### A. Spearman Rank Correlation
+We used Spearman's rank correlation (instead of Pearson) to handle extreme outliers like the USA and China.
 * **Military Power:** Strongest correlation ($r \approx 0.65$, $p < 0.001$).
 * **GDP:** Strong correlation ($r \approx 0.61$, $p < 0.001$).
 * **Democracy:** Weak correlation ($r \approx 0.29$).
 
-## 3. Two-Sample T-Test
-Countries were split into "Strong" and "Weak" military groups (median split).
-* **Result:** The "Strong Military" group receives **2.5x more news mentions** on average than the "Weak" group ($p < 0.001$).
+### B. Two-Sample T-Test
+We split countries into "High" (Top 50%) and "Low" (Bottom 50%) groups based on the median of each variable to see if the means differed significantly.
+* **Military Power:** The "Strong Military" group receives **2.5x more news mentions** than the weak group ($p < 0.001$).
+* **GDP:** The "High GDP" group receives significantly more mentions than the low group ($p < 0.001$).
+* **Democracy:** The "High Democracy" group receives more mentions than the low group, but the difference is much smaller compared to Military and GDP.
 
 # Conclusion
 The analysis supports **H3 (Military)** and **H1 (GDP)** most strongly. "Hard Power" drives global news coverage significantly more than "Soft Power" (Democracy).
