@@ -33,7 +33,7 @@ Other sources combined with this dataset:
 * **News Frequency:** Processed raw `news.jsonl` files, filtering out countries with fewer than **1,000 mentions** to remove noise.
 * **Name Normalization:** Manually mapped inconsistent country names (e.g., "Turkey" ↔ "Türkiye", "Ivory Coast" ↔ "Côte d'Ivoire") to ensure accurate merging across datasets.
 
-# Data Cleaning & Imputation
+## 2. Data Cleaning & Imputation
 To ensure a comprehensive analysis, we addressed two main challenges in the raw data: **Naming Inconsistencies** and **Missing Values** for key geopolitical entities.
 
 ### A. Naming Harmonization
