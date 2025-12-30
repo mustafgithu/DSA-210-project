@@ -42,19 +42,19 @@ Other sources combined with this dataset:
 Below are the key visualizations illustrating the relationship between national indicators and global news coverage.
 
 ### A. Economic Power (GDP) vs. Attention
-![GDP vs Frequency](gdp_visualization_output.png)
+![GDP vs Frequency](images/gdp_visualization_output.png)
 > **Figure 1:** The relationship between GDP and News Frequency (Log-Log Scale). There is a clear, strong linear trend ($r \approx 0.61$), indicating that a country's economic size is a primary driver of its global visibility.
 
 ### B. Military Strength vs. Attention
-![Military vs Frequency](military_visualization_output.png)
+![Military vs Frequency](images/military_visualization_output.png)
 > **Figure 2:** Military Power vs. News Frequency. This indicator demonstrated the **strongest correlation** ($r \approx 0.65$) of all variables tested. The "Hard Power" bias is evident, as nations with higher military capabilities dominate the news cycle.
 
 ### C. State Fragility (FSI) vs. Attention
-![FSI vs Frequency](fsi_visualization_output.png)
+![FSI vs Frequency](images/fsi_visualization_output.png)
 > **Figure 3:** Fragile States Index vs. News Frequency. Contrary to the popular "if it bleeds, it leads" assumption, our data shows a **negative correlation** ($r \approx -0.33$). Highly fragile, unstable states often receive *less* coverage than stable, powerful nations, unless they are strategically important.
 
 ### D. Democracy vs. Attention
-![Democracy vs Frequency](democracy_visualization_output.png)
+![Democracy vs Frequency](images/democracy_visualization_output.png)
 > **Figure 4:** Democracy Index vs. News Frequency. While there is a slight preference for democratic nations, the relationship is weak ($r \approx 0.29$) and highly scattered compared to economic and military indicators.
 
 ## 2. Hypothesis Testing
