@@ -33,9 +33,22 @@ Other sources combined with this dataset:
 * **News Frequency:** Processed raw `news.jsonl` files, filtering out countries with fewer than **1,000 mentions** to remove noise.
 * **Name Normalization:** Manually mapped inconsistent country names (e.g., "Turkey" ↔ "Türkiye", "Ivory Coast" ↔ "Côte d'Ivoire") to ensure accurate merging across datasets.
 
-## 2. Imputation & Transformation
-* **Military Data:** Since **Hong Kong** and **Palestine** appear frequently in news but lack sovereign military rankings, their scores were imputed using the dataset's **minimum strength (weakest) value + 10% penalty**.
-* **Variable Transformation:** The Global Firepower Index uses a "lower is better" score (0.00 is perfect). For analysis, this was inverted ($1/PowerIndex$) so that higher values represent stronger militaries.
+# Data Cleaning & Imputation
+To ensure a comprehensive analysis, we addressed two main challenges in the raw data: **Naming Inconsistencies** and **Missing Values** for key geopolitical entities.
+
+### A. Naming Harmonization
+Country names were standardized across all 5 datasets to match the master "News Frequency" list.
+* **Examples:** "Turkey" $\rightarrow$ "Türkiye", "Ivory Coast" $\rightarrow$ "Côte d'Ivoire", "Russian Federation" $\rightarrow$ "Russia".
+
+### B. Strategic Imputation
+Standard international datasets (like the World Bank or UN) often exclude non-member entities like **Taiwan**, **Hong Kong**, and **Kosovo**. However, these are high-visibility actors in global news.
+
+Instead of dropping them (which would bias the "News Frequency" analysis), we imputed their missing values using reasoned estimates from regional peers and alternative reports:
+
+* **GDP:** Imputed for **Taiwan** using official national statistical data (since it is excluded from World Bank data).
+* **Democracy Index:** Imputed for **Hong Kong** and small island nations using the average scores of their respective regions.
+* **Fragile States Index (FSI):** Imputed for **Taiwan**, **Hong Kong**, and **Kosovo** by referencing the scores of comparable regional peers (e.g., South Korea, Singapore, and Balkan neighbors).
+* **Military Power:** Imputed for entities missing from the GlobalFirePower index by referencing similar-sized military powers in their region.
 
 # Analysis & Results
 ## 1. Visual Analysis
