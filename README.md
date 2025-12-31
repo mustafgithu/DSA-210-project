@@ -10,7 +10,7 @@ This project aims to uncover the underlying determinants of **international visi
 The main source of data is the **Diplomatic text dataset** from GlobalDiplomacyNet project (https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi%3A10.7910/DVN/HYJDE0)
 
 Other sources combined with this dataset:
-1) **GDP by country dataset** --> from Our World in Data (https://ourworldindata.org/grapher/gdp-worldbank-constant-usd) (averages between 2015-2024)
+1) **GDP by country dataset** --> from Our World in Data (https://ourworldindata.org/grapher/gdp-worldbank-constant-usd) (average of last available 10 years of a country)
 2) **Democracy index by country dataset** --> from kaggle (https://www.kaggle.com/datasets/shreyasur965/democracy-index)
 3) **Military Ranking** --> from Global Firepower Index (https://www.globalfirepower.com/countries-listing.php)
    * *Note:* Official website only hosts 2025 data. Historical data (2017-2024) was retrieved from archives to create a robust average:
@@ -20,7 +20,7 @@ Other sources combined with this dataset:
      * https://www.kaggle.com/datasets/mickaelandrieu/global-fire-power-ranking-2022
      * https://www.kaggle.com/datasets/hanif13/global-firepower-2023
      * https://www.kaggle.com/datasets/chayanonc/military-strength-by-country-2024
-4) **Fragile States Index** --> from Fragile States Index (https://fragilestatesindex.org/global-data/) (average of last available 10 years of a country)
+4) **Fragile States Index** --> from Fragile States Index (https://fragilestatesindex.org/global-data/) (average of last  10 years )
 
 # Main Hypotheses 
 * **H1:** There is a relation between **GDP** of a country and number of mentions of country by other countries.
