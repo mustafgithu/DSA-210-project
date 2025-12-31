@@ -138,7 +138,24 @@ The **Linear Regression** model is the clear winner for this project.
 2.  **Sample Size:** With only ~150 data points (countries), complex models like Gradient Boosting tend to "memorize" noise rather than learning general rules.
 3.  **Conclusion:** A country's visibility in the global news cycle is primarily determined by a straightforward, linear combination of its **Hard Power** (GDP and Military Strength).
 
-# 4. Conclusion
-* The analysis supports **H3 (Military)** and **H1 (GDP)** most strongly.
-"Hard Power" (Military and Economic strength) drives global news coverage significantly more than "Soft Power" (Democracy).
-* Additionally, we found that **Stability** is preferred over Fragility: highly stable, powerful nations receive significantly more attention than fragile, conflict-prone states.
+# 4. Final Conclusion
+
+By combining statistical hypothesis testing with machine learning models, we have reached a robust conclusion about what drives global visibility.
+
+### A. Hard Power is the Primary Driver
+Both our statistical tests and our ML feature analysis agree: **Hard Power dominates.**
+* **Evidence:** In hypothesis testing, countries with high **GDP** and **Military Strength** received significantly more news mentions ($p < 0.001$).
+* **Confirmation:** The Machine Learning correlation matrix showed that GDP and Military Strength had the strongest positive correlations (> 0.67) with news frequency, far outweighing Democracy or Fragility.
+
+### B. The "Power Law" of Attention
+Our Machine Learning experiment revealed the *nature* of this relationship.
+* **Linear Model Win:** The fact that **Linear Regression** outperformed complex models (like Gradient Boosting) proves that the relationship is direct and proportional.
+* **Interpretation:** We observed a clear **Power Law**. As a nation's "Hard Power" increases exponentially, its global news coverage increases exponentially. There are no complex, hidden non-linear rules—it is a straightforward hierarchy of power.
+
+### C. Stability Over Fragility
+Contrary to the belief that "bad news travels fast," our data suggests that **Stability** attracts more consistent global attention than Fragility.
+* The **Fragile State Index (FSI)** had a negative correlation with news frequency.
+* Global diplomacy and news cycles prioritize powerful, stable actors over fragile states, likely due to their central role in the global economy and security architecture.
+
+###  Summary
+If a country wants to increase its global "share of voice," **Economic Wealth (GDP)** and **Military Power** are the decisive factors. Democratic status and internal fragility play a minor secondary role compared to the sheer weight of Hard Power.
