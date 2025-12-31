@@ -20,7 +20,7 @@ Other sources combined with this dataset:
      * https://www.kaggle.com/datasets/mickaelandrieu/global-fire-power-ranking-2022
      * https://www.kaggle.com/datasets/hanif13/global-firepower-2023
      * https://www.kaggle.com/datasets/chayanonc/military-strength-by-country-2024
-4) **Fragile States Index** --> from Fragile States Index (https://fragilestatesindex.org/global-data/)(last available 10 years of a country)
+4) **Fragile States Index** --> from Fragile States Index (https://fragilestatesindex.org/global-data/) (average of last available 10 years of a country)
 
 # Main Hypotheses 
 * **H1:** There is a relation between **GDP** of a country and number of mentions of country by other countries.
