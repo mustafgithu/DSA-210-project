@@ -87,7 +87,58 @@ We split countries into "High" (Top 50%) and "Low" (Bottom 50%) groups based on 
 * **Democracy:** The "High Democracy" group receives more mentions than the low group, but the difference is much smaller compared to Military and GDP.
 * **FSI:** No significant difference between the groups
 
-# Conclusion
+
+# 3. Machine Learning Results & Analysis
+
+We trained three distinct models to predict a country's **News Frequency** based on its national indicators (GDP, Military Power, Democracy, Fragility).
+
+### A. Feature Correlation
+First, we analyzed how our features correlate with the target variable (`Log_Frequency`).
+![Correlation Matrix](images/correlation_matrix.png)
+* **Key Finding:** Economic Power and Military Strength show the strongest positive correlation (> 0.67), suggesting they are the primary drivers of attention.
+
+---
+
+### B. Model Performance Comparison (LOOCV)
+
+We evaluated models using **Leave-One-Out Cross-Validation (LOOCV)** to ensure robust testing on our dataset of ~150 countries.
+
+| Model | RMSE (Error) 📉 | $R^2$ Score 📈 | Interpretation |
+| :--- | :--- | :--- | :--- |
+| **Linear Regression** | **0.669** | **0.462** |  **Best Model.** Successfully captures the direct "Power Law" relationship. |
+| **Random Forest** | 0.710 | 0.390 | **Overfitting.** The model complexity outweighed the signal in the small dataset. |
+| **Gradient Boosting** | 0.780 | 0.270 | **Poor Fit.** Struggled to generalize; highest error rate. |
+
+---
+
+### C. Visualizing the Predictions
+
+Below are the **Actual vs. Predicted** plots for each model. A perfect model would align all blue dots on the red diagonal line.
+
+####  Model A: Linear Regression (The Winner)
+![Linear Regression Results](images/linear_regression_results.png)
+* **Observation:** The linear model follows the diagonal trend reasonably well, explaining why it has the highest accuracy.
+
+####  Model B: Random Forest
+![Random Forest Results](images/random_forest_results.png)
+* **Observation:** While it captures the general trend, the points are more scattered compared to the linear model, indicating higher variance (overfitting).
+
+####  Model C: Gradient Boosting
+![Gradient Boosting Results](images/gradient_boosting_results.png)
+* **Observation:** This model shows significant scattering, proving it is too complex for this specific sample size.
+
+---
+
+##  Final Verdict: Linear Regression
+
+The **Linear Regression** model is the clear winner for this project.
+
+**Why did the simplest model win?**
+1.  **The "Power Law" Reality:** Global news attention follows a power law (a few countries get *massive* attention, most get little). After we applied log-transformations, this relationship became linear.
+2.  **Sample Size:** With only ~150 data points (countries), complex models like Gradient Boosting tend to "memorize" noise rather than learning general rules.
+3.  **Conclusion:** A country's visibility in the global news cycle is primarily determined by a straightforward, linear combination of its **Hard Power** (GDP and Military Strength).
+
+# 4. Conclusion
 * The analysis supports **H3 (Military)** and **H1 (GDP)** most strongly.
 "Hard Power" (Military and Economic strength) drives global news coverage significantly more than "Soft Power" (Democracy).
 * Additionally, we found that **Stability** is preferred over Fragility: highly stable, powerful nations receive significantly more attention than fragile, conflict-prone states.
