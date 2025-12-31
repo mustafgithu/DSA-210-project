@@ -10,7 +10,7 @@ This project aims to uncover the underlying determinants of **international visi
 The main source of data is the **Diplomatic text dataset** from GlobalDiplomacyNet project (https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi%3A10.7910/DVN/HYJDE0)
 
 Other sources combined with this dataset:
-1) **GDP by country dataset** --> from Our World in Data (https://ourworldindata.org/grapher/gdp-worldbank-constant-usd)(averages between 2015-2024)
+1) **GDP by country dataset** --> from Our World in Data (https://ourworldindata.org/grapher/gdp-worldbank-constant-usd) (averages between 2015-2024)
 2) **Democracy index by country dataset** --> from kaggle (https://www.kaggle.com/datasets/shreyasur965/democracy-index)
 3) **Military Ranking** --> from Global Firepower Index (https://www.globalfirepower.com/countries-listing.php)
    * *Note:* Official website only hosts 2025 data. Historical data (2017-2024) was retrieved from archives to create a robust average:
