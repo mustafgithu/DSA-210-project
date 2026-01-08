@@ -159,3 +159,8 @@ Contrary to the belief that "bad news travels fast," our data suggests that **St
 
 ###  Summary
 If a country wants to increase its global "share of voice," **Economic Wealth (GDP)** and **Military Power** are the decisive factors. Democratic status and internal fragility play a minor secondary role compared to the sheer weight of Hard Power.
+
+### ⚠️ Limitations & Technical Note
+While our analysis provides strong evidence for the dominance of Hard Power, we identified significant **multicollinearity** between our two main predictors:
+* **GDP and Military Power** share a correlation of **0.87**.
+* **Implication:** This indicates that economically wealthy nations almost universally possess strong military capabilities. While we retained both features to test distinct theoretical hypotheses ("Economic Power" vs. "Military Power"), their high overlap means the linear regression model may struggle to statistically disentangle their individual contributions. The "weight" assigned to one versus the other should be interpreted with this redundancy in mind.
