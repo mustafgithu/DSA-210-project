@@ -1,7 +1,9 @@
 pandas
 numpy
+scipy
+scikit-learn
 matplotlib
 seaborn
-scikit-learn
-scipy
+requests
+tqdm
 jupyter
