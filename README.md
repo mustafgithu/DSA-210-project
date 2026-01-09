@@ -77,37 +77,43 @@ Instead of dropping them (which would bias the "News Frequency" analysis), we im
 * **Fragile States Index (FSI):** Imputed for **Taiwan**, **Hong Kong**, and **Kosovo** by referencing the scores of comparable regional peers (e.g., South Korea, Singapore, and Balkan neighbors).
 * **Military Power:** Imputed for entities missing from the GlobalFirePower index by referencing similar-sized military powers in their region.
 
-## 3. Data Processing Pipeline 
-To ensure robustness, we did not simply merge raw files. Instead, we created **Intermediate Processed Datasets** by averaging historical data to smooth out yearly anomalies. The data was generated in the following order:
+### C. Data Processing Pipeline (Step-by-Step)
+To ensure robustness, we utilized a multi-stage pipeline that processed raw text and indicator data into intermediate files before the final merge.
 
-### A. Generating Intermediate "Average" Files
-Before the final merge, each indicator was processed individually to create a single representative score for each country:
-* **Step 1: GDP Processing (`gdp_avg`)**
-    * *Input:* Raw World Bank Data (Yearly columns).
-    * *Action:* Filtered for the last decade (2011-2020) and calculated the mean.
-    * *Output:* A cleaned list of ~200 countries with their 10-year average economic size.
-* **Step 2: Democracy Processing (`democracy_avg`)**
-    * *Input:* Raw EIU Democracy Index.
-    * *Action:* Averaged scores from 2013-2020 to determine the country's sustained political regime type.
-* **Step 3: Military Processing (`military_avg`)**
-    * *Input:* 8 separate files (2017, 2019, 2020, 2021, 2022, 2023, 2024, 2025).
-    * *Action:* Merged all years and calculated the mean `PowerIndex` to fix outliers (e.g., a country temporarily dropping in rank due to data errors).
-* **Step 4: FSI Processing (`fsi_avg`)**
-    * *Input:* Fragile State Index raw data.
-    * *Action:* Averaged the "Total" score over the last available 10 years.
+#### 1. Generating the "Backbone": News Frequency
+* **Input:** Raw `news.jsonl` files (containing millions of country mentions).
+* **Action:**
+    1.  Counted mentions for every unique entity.
+    2.  **Filtered** out entities with fewer than 1,000 mentions to remove noise (e.g., spelling errors, obscure localities).
+* **Output:** `filtered_country_counts.csv` (The target variable list).
 
-### B. The Master Merge Sequence
-Once the intermediate datasets were ready, we built the final dataset using the **News Frequency** list as the "Backbone" to ensure we only kept countries relevant to our text analysis:
-1.  **Base:** Start with `News Frequency` (Entities with >1,000 mentions).
-2.  **Merge 1:** Attach `gdp_avg` (Inner Join).
-3.  **Merge 2:** Attach `democracy_avg` (Inner Join).
-4.  **Merge 3:** Attach `military_avg` (Inner Join).
-5.  **Merge 4:** Attach `fsi_avg` (Left Join).
-    * *Note:* A Left Join was used here because some high-visibility entities (like Taiwan) are missing from the FSI source but needed to be kept for manual imputation.
+#### 2. Generating Indicator Averages (Raw)
+We processed each external dataset to create a single 10-year average score for each country:
+* **GDP:** Averaged World Bank data (2011-2020) $\rightarrow$ `country_gdp_last_10_averages_billions.csv`.
+* **Democracy:** Averaged EIU scores (2013-2020) $\rightarrow$ `country_democracy_averages_rounded.csv`.
+* **Military:** Averaged Global Firepower rankings (2017-2025) $\rightarrow$ `country_average_power_index.csv`.
+* **FSI:** Averaged Fragile State Index scores (last 10 years) $\rightarrow$ `country_average_fsi_score.csv`.
 
-### C. Final Output
+#### 3. Intermediate Imputation & Alignment (The "Correction" Step)
+Before merging, we addressed critical data gaps where standard datasets (GDP/Democracy) excluded key geopolitical actors.
+* **Problem:** Countries like **Taiwan**, **North Korea**, and **Venezuela** were missing from the World Bank GDP or EIU datasets but were highly frequent in our News backbone.
+* **Action:**
+    * Created `imputed_gdp_data` and `imputed_democracy_data` with researched estimates.
+    * **Merged** these imputed values into the raw average files.
+    * Dropped duplicates and aligned country names.
+* **Output:** `country_gdp_averages_imputed.csv` and `country_democracy_averages_imputed.csv`.
+
+#### 4. The Master Merge Sequence
+Finally, we combined the "Backbone" (Frequency) with the cleaned "Indicators" using Inner Joins to ensure complete data availability.
+1.  **Base:** Start with `filtered_country_counts.csv`.
+2.  **Merge 1:** Attach `country_gdp_averages_imputed.csv` (Adds 700B for Taiwan, 40B for N. Korea, etc.).
+3.  **Merge 2:** Attach `country_democracy_averages_imputed.csv`.
+4.  **Merge 3:** Attach `country_average_power_index.csv`.
+5.  **Merge 4:** Attach `country_average_fsi_score.csv` (using Left Join to preserve islands/small states).
+
+#### 5. Final Output
 * **File:** `final_complete_dataset.csv`
-* **Content:** A single row per country containing its Frequency, Average GDP, Average Democracy Score, Average Military Power, and FSI Score.
+* **Content:** A single row per country containing `Log_Frequency`, `Avg_GDP`, `Avg_Democracy`, `Avg_Military`, and `Avg_FSI`.
 
 # Analysis & Results
 ## 1. Visual Analysis
