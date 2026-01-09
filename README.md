@@ -226,3 +226,19 @@ Contrary to the belief that "bad news travels fast," our data suggests that **St
 
 ###  Summary
 If a country wants to increase its global "share of voice," **Military Power** is the single most decisive factor. Wealth helps build an army, but **Hard Power** is what captures the world's attention.
+
+# 5. Limitations & Future Work
+
+While this project successfully identified "Hard Power" as the primary driver of global attention, several limitations remain that future research could address.
+
+### A. Limitations
+1.  **Causality vs. Correlation:** Our analysis establishes a strong predictive relationship, but it cannot prove strict causality. While it is logical that military power drives attention, unobserved variables (e.g., historical colonial ties, trade routes) could influence both.
+2.  **Static Timeframe:** We averaged data over a 10-year period (2011-2020) to create a robust cross-sectional study. This obscures temporal dynamics—for example, a small country might briefly dominate global news during a specific crisis (e.g., a natural disaster or coup) despite having low average power.
+3.  **Language Bias:** The "GlobalDiplomacyNet" dataset is primarily derived from English-language sources and Western diplomatic cables. This inherently biases the "News Frequency" metric toward the geopolitical interests of the Anglosphere.
+4.  **Sample Size Constraints:** With only ~150 sovereign nations as data points, the dataset is too small for complex Machine Learning models. This explains why Random Forest and Gradient Boosting overfitted, while simple Linear Regression generalized best.
+
+### B. Future Directions
+1.  **Temporal Analysis:** Instead of 10-year averages, future work could model this as a **Time-Series Forecasting** problem. Does an increase in a country's military budget in Year $T$ predict a rise in news coverage in Year $T+1$?
+2.  **Sentiment Analysis:** This project focused on the *quantity* of attention (Frequency). A natural next step is to analyze the *quality* (Sentiment). Do "Hard Power" nations receive more negative coverage (fear/threats), while "Soft Power" nations receive positive coverage?
+3.  **Network Analysis:** Rather than just counting global mentions, we could construct a **Directed Graph** ($Country A \to mentions \to Country B$) to see if the "Attention Hierarchy" is centralized around specific superpowers or regional hubs.
+4.  **Cultural Indicators:** We tested Political "Soft Power" (Democracy). Future iterations could test Cultural "Soft Power" using metrics like **Tourism statistics**, **International Student counts**, or **Cultural Exports** (movies, music) to see if they offer a competing signal to Military Power.
