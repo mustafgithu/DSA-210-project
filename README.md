@@ -18,7 +18,7 @@
   * [C. Visualizing the Predictions](#c-visualizing-the-predictions)
   * [Final Verdict: Linear Regression](#final-verdict-linear-regression)
 * [4. Final Conclusion](#4-final-conclusion)
-* [5. Limitations & Future Work](#5-Limitations-Future-Work)
+* [5. Limitations & Future Work](#5-Limitations--Future-Work)
 
 # Introduction
 In this project, I analyze the key factors that drive a country's **frequency of global mentions**. I investigate why some nations dominate the global news cycle and diplomatic reports while others receive little attention, specifically focusing on whether this visibility is driven by "Hard Power" or "Soft Power."
