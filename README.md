@@ -1,6 +1,7 @@
 # DSA-210-project
 # Table of Contents
 * [Introduction](#introduction)
+* [Motivation](#motivation)
 * [Project Proposal](#project-proposal)
 * [Data Sources](#data-sources)
 * [Main Hypotheses](#main-hypotheses)
@@ -19,6 +20,13 @@
 
 # Introduction
 In this project, I analyze the key factors that drive a country's **frequency of global mentions**. I investigate why some nations dominate the global news cycle and diplomatic reports while others receive little attention, specifically focusing on whether this visibility is driven by "Hard Power" or "Soft Power."
+
+# Motivation
+In an interconnected world, **attention is a currency**. The frequency with which a country appears in global news and diplomatic cables significantly influences its ability to attract aid, investment, and political support.
+
+However, this global spotlight is unevenly distributed. A crisis in one nation may dominate headlines for months, while similar events elsewhere go unreported. This raises a critical question for data science: **Is global visibility driven by "Soft Power" ideals (Democracy, Stability) or "Hard Power" realities (Military, GDP)?**
+
+Understanding the mechanics of this attention bias is not just an academic exercise—it reveals the unwritten rules of the modern international system. By quantifying these drivers, this project aims to determine whether the world listens to those who are *virtuous* or simply those who are *powerful*.
 
 # Project Proposal
 This project aims to uncover the underlying determinants of **international visibility**. By integrating large-scale text frequency data with major global indicators, I explore which characteristics—**Economic Wealth (GDP)**, **Military Strength**, **Fragile State Index** or **Democratic Status**—best predict how often a country is reported on by the rest of the world.
