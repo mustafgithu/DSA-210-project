@@ -21,6 +21,7 @@
 
 # Introduction
 I'm Mustafa Enes Yurt, currently a sophomore Computer Science and Engineering student at Sabancı University. 
+
 In this project, I analyze the key factors that drive a country's **frequency of global mentions**. I investigate why some nations dominate the global news cycle and diplomatic reports while others receive little attention, specifically focusing on whether this visibility is driven by "Hard Power" or "Soft Power."
 
 # Motivation
