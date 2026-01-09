@@ -252,3 +252,6 @@ While this project successfully identified "Hard Power" as the primary driver of
 2.  **Sentiment Analysis:** This project focused on the *quantity* of attention (Frequency). A natural next step is to analyze the *quality* (Sentiment). Do "Hard Power" nations receive more negative coverage (fear/threats), while "Soft Power" nations receive positive coverage?
 3.  **Network Analysis:** Rather than just counting global mentions, we could construct a **Directed Graph** ($Country A \to mentions \to Country B$) to see if the "Attention Hierarchy" is centralized around specific superpowers or regional hubs.
 4.  **Cultural Indicators:** We tested Political "Soft Power" (Democracy). Future iterations could test Cultural "Soft Power" using metrics like **Tourism statistics**, **International Student counts**, or **Cultural Exports** (movies, music) to see if they offer a competing signal to Military Power.
+
+# 6. Declaration of AI Use
+AI tools were extensively used in the creation of this project, specifically for **code debugging**, **data visualization refinement**, and **documentation formatting**. All analytical results and final verdicts were manually verified by the author to ensure accuracy.
