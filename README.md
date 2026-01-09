@@ -8,6 +8,7 @@
 * [Methodology](#methodology)
   * [1. Data Processing](#1-data-processing)
   * [2. Data Cleaning & Imputation](#2-data-cleaning--imputation)
+  * [3. Data Processing Pipeline](#3-data-processing-pipeline)
 * [Analysis & Results](#analysis--results)
   * [1. Visual Analysis](#1-visual-analysis)
   * [2. Hypothesis Testing](#2-hypothesis-testing)
@@ -75,10 +76,10 @@ Instead of dropping them (which would bias the "News Frequency" analysis), we im
 * **Fragile States Index (FSI):** Imputed for **Taiwan**, **Hong Kong**, and **Kosovo** by referencing the scores of comparable regional peers (e.g., South Korea, Singapore, and Balkan neighbors).
 * **Military Power:** Imputed for entities missing from the GlobalFirePower index by referencing similar-sized military powers in their region.
 
-### C. Data Processing Pipeline (Step-by-Step)
+## 3. Data Processing Pipeline 
 To ensure robustness, we did not simply merge raw files. Instead, we created **Intermediate Processed Datasets** by averaging historical data to smooth out yearly anomalies. The data was generated in the following order:
 
-#### 1. Generating Intermediate "Average" Files
+### A. Generating Intermediate "Average" Files
 Before the final merge, each indicator was processed individually to create a single representative score for each country:
 * **Step 1: GDP Processing (`gdp_avg`)**
     * *Input:* Raw World Bank Data (Yearly columns).
@@ -94,7 +95,7 @@ Before the final merge, each indicator was processed individually to create a si
     * *Input:* Fragile State Index raw data.
     * *Action:* Averaged the "Total" score over the last available 10 years.
 
-#### 2. The Master Merge Sequence
+### B. The Master Merge Sequence
 Once the intermediate datasets were ready, we built the final dataset using the **News Frequency** list as the "Backbone" to ensure we only kept countries relevant to our text analysis:
 1.  **Base:** Start with `News Frequency` (Entities with >1,000 mentions).
 2.  **Merge 1:** Attach `gdp_avg` (Inner Join).
@@ -103,9 +104,9 @@ Once the intermediate datasets were ready, we built the final dataset using the 
 5.  **Merge 4:** Attach `fsi_avg` (Left Join).
     * *Note:* A Left Join was used here because some high-visibility entities (like Taiwan) are missing from the FSI source but needed to be kept for manual imputation.
 
-#### 3. Final Output
+### C. Final Output
 * **File:** `final_complete_dataset.csv`
-* **Content:** A single row per country containing its Log-Frequency, Average GDP, Average Democracy Score, Average Military Power, and Imputed FSI Score.
+* **Content:** A single row per country containing its Frequency, Average GDP, Average Democracy Score, Average Military Power, and FSI Score.
 
 # Analysis & Results
 ## 1. Visual Analysis
