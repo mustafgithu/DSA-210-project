@@ -7,3 +7,5 @@ seaborn
 requests
 tqdm
 jupyter
+os
+concurrent.futures
