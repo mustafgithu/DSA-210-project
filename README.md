@@ -27,6 +27,8 @@ In an interconnected world, **attention is a currency**. The frequency with whic
 
 However, this global spotlight is unevenly distributed. A crisis in one nation may dominate headlines for months, while similar events elsewhere go unreported. This raises a critical question for data science: **Is global visibility driven by "Soft Power" ideals (Democracy, Stability) or "Hard Power" realities (Military, GDP)?**
 
+Also on a personal level, I always had an interest in the hidden mechanics of **diplomatic traffic**—how nations signal importance to one another through official channels and media mentions. By quantifying these drivers, this project aims to bridge my curiosity about international relations with rigorous data analysis to determine whether the world listens to those who are *virtuous* or simply those who are *powerful*.
+
 Understanding the mechanics of this attention bias is not just an academic exercise—it reveals the unwritten rules of the modern international system. By quantifying these drivers, this project aims to determine whether the world listens to those who are *virtuous* or simply those who are *powerful*.
 
 # Project Proposal
