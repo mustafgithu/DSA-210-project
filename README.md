@@ -20,7 +20,7 @@
 * [5. Limitations & Future Work](#5-Limitations--Future-Work)
 
 # Introduction
-I'm Mustafa Enes Yurt, currently a sophomore Computer Science and Engineering student. In this project, I analyze the key factors that drive a country's **frequency of global mentions**. I investigate why some nations dominate the global news cycle and diplomatic reports while others receive little attention, specifically focusing on whether this visibility is driven by "Hard Power" or "Soft Power."
+I'm Mustafa Enes Yurt, currently a sophomore Computer Science and Engineering student at Sabancı University. In this project, I analyze the key factors that drive a country's **frequency of global mentions**. I investigate why some nations dominate the global news cycle and diplomatic reports while others receive little attention, specifically focusing on whether this visibility is driven by "Hard Power" or "Soft Power."
 
 # Motivation
 In an interconnected world, **attention is a currency**. The frequency with which a country appears in global news and diplomatic cables significantly influences its ability to attract aid, investment, and political support.
