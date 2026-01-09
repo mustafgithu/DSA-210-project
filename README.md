@@ -120,7 +120,7 @@ We trained three distinct models to predict a country's **News Frequency** based
 ### A. Feature Correlation
 First, we analyzed how our features correlate with the target variable (`Log_Frequency`).
 ![Correlation Matrix](images/correlation_matrix.png)
-* **Key Finding:** Economic Power and Military Strength show the strongest positive correlation (> 0.67), suggesting they might stole the credit of importance from each other in linear regression model. So, I split the LG into three : One with both, one without military and one without GDP
+* **Key Finding:** * **Key Finding:** Economic Power and Military Strength show the strongest positive correlation (0.87). To determine which one is the true driver, we split the Linear Regression into three experimental models: One with both, one without Military, and one without GDP.
 
 ---
 
