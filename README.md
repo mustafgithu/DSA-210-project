@@ -1,4 +1,21 @@
 # DSA-210-project
+# Table of Contents
+* [Introduction](#introduction)
+* [Project Proposal](#project-proposal)
+* [Data Sources](#data-sources)
+* [Main Hypotheses](#main-hypotheses)
+* [Methodology](#methodology)
+  * [1. Data Processing](#1-data-processing)
+  * [2. Data Cleaning & Imputation](#2-data-cleaning--imputation)
+* [Analysis & Results](#analysis--results)
+  * [1. Visual Analysis](#1-visual-analysis)
+  * [2. Hypothesis Testing](#2-hypothesis-testing)
+* [3. Machine Learning Results & Analysis](#3-machine-learning-results--analysis)
+  * [A. Feature Correlation](#a-feature-correlation)
+  * [B. Model Performance Comparison](#b-model-performance-comparison-loocv)
+  * [C. Visualizing the Predictions](#c-visualizing-the-predictions)
+  * [Final Verdict: Linear Regression](#final-verdict-linear-regression)
+* [4. Final Conclusion](#4-final-conclusion)
 
 # Introduction
 In this project, I analyze the key factors that drive a country's **frequency of global mentions**. I investigate why some nations dominate the global news cycle and diplomatic reports while others receive little attention, specifically focusing on whether this visibility is driven by "Hard Power" or "Soft Power."
