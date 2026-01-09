@@ -95,7 +95,7 @@ We trained three distinct models to predict a country's **News Frequency** based
 ### A. Feature Correlation
 First, we analyzed how our features correlate with the target variable (`Log_Frequency`).
 ![Correlation Matrix](images/correlation_matrix.png)
-* **Key Finding:** Economic Power and Military Strength show the strongest positive correlation (> 0.67), suggesting they are the primary drivers of attention.
+* **Key Finding:** Economic Power and Military Strength show the strongest positive correlation (> 0.67), suggesting they might stole the credit of importance from each other in linear regression model. So, I split the LG into three : One with both, one without military and one without GDP
 
 ---
 
@@ -103,11 +103,13 @@ First, we analyzed how our features correlate with the target variable (`Log_Fre
 
 We evaluated models using **Leave-One-Out Cross-Validation (LOOCV)** to ensure robust testing on our dataset of ~150 countries.
 
-| Model | RMSE (Error) 📉 | $R^2$ Score 📈 | Interpretation |
+| Model | RMSE (Error) $\downarrow$ | $R^2$ Score (Accuracy) $\uparrow$ | Interpretation |
 | :--- | :--- | :--- | :--- |
-| **Linear Regression** | **0.669** | **0.462** |  **Best Model.** Successfully captures the direct "Power Law" relationship. |
-| **Random Forest** | 0.710 | 0.390 | **Overfitting.** The model complexity outweighed the signal in the small dataset. |
-| **Gradient Boosting** | 0.780 | 0.270 | **Poor Fit.** Struggled to generalize; highest error rate. |
+| **Linear Regression (exclude GDP)** | **0.6684** (Lowest) | **0.4629** (Highest) | **Winner.**  |
+| **Linear Regression(both GDP and military)** | 0.6693 | 0.4615|**Slightly Lower.** Adding GDP introduced noise/redundancy.    |
+| **Linear Regression(exclude military)** | 0.6897  | 0.4281|**Considerably worse than other LG models** Economic wealth alone is a weaker predictor.    |
+| **Random Forest** | 0.7132 | 0.3884 | **Overfitting.** The model tried to find complex rules that didn't exist, hurting its test performance. |
+| **Gradient Boosting** | 0.7802 (Highest) | 0.2683 (Lowest) | **Overfitting.** The model was too complex for the small sample size (~150 countries). |
 
 ---
 
@@ -115,9 +117,17 @@ We evaluated models using **Leave-One-Out Cross-Validation (LOOCV)** to ensure r
 
 Below are the **Actual vs. Predicted** plots for each model. A perfect model would align all blue dots on the red diagonal line.
 
-####  Model A: Linear Regression (The Winner)
-![Linear Regression Results](images/linear_regression_results.png)
-* **Observation:** The linear model follows the diagonal trend reasonably well, explaining why it has the highest accuracy.
+####  Model A.3: Linear Regression without GDP (The Winner)
+![Linear Regression Without GDP Results](images/linear_regression_without_GDP_results.png)
+* **Observation:** This model aligns best with the diagonal, proving that focusing on Military Power yields the most accurate predictions.
+
+####  Model A.1: Linear Regression with both
+![Linear Regression Without GDP Results](images/linear_regression_all_results.png)
+* **Observation:** Adding GDP did not improve the fit; the results are nearly identical (or slightly worse) than the Military-only model.
+
+####  Model A.2: Linear Regression without Military 
+![Linear Regression Without Military Results](images/linear_regression_without_military_results.png)
+* **Observation:** Without Military Power, the model struggles more to predict global attention, resulting in higher error.
 
 ####  Model B: Random Forest
 ![Random Forest Results](images/random_forest_results.png)
@@ -128,7 +138,6 @@ Below are the **Actual vs. Predicted** plots for each model. A perfect model wou
 * **Observation:** This model shows significant scattering, proving it is too complex for this specific sample size.
 
 ---
-
 ##  Final Verdict: Linear Regression
 
 The **Linear Regression** model is the clear winner for this project.
@@ -140,17 +149,17 @@ The **Linear Regression** model is the clear winner for this project.
 
 # 4. Final Conclusion
 
-By combining statistical hypothesis testing with machine learning models, we have reached a robust conclusion about what drives global visibility.
+By combining statistical hypothesis testing with machine learning ablation studies, we have reached a robust conclusion about what drives global visibility.
 
-### A. Hard Power is the Primary Driver
-Both our statistical tests and our ML feature analysis agree: **Hard Power dominates.**
-* **Evidence:** In hypothesis testing, countries with high **GDP** and **Military Strength** received significantly more news mentions ($p < 0.001$).
-* **Confirmation:** The Machine Learning correlation matrix showed that GDP and Military Strength had the strongest positive correlations (> 0.67) with news frequency, far outweighing Democracy or Fragility.
+### A. Military Power is the "Master Variable"
+Our ablation study yielded a decisive result: **The "Military Focus" model outperformed both the "GDP Focus" model and the "Combined" model.**
+* This confirms that the global diplomatic network is driven primarily by **Security Realism**. The world pays attention to nations that can project force.
+* While economic power is important, it generates significantly less "news frequency" than military capacity.
 
-### B. The "Power Law" of Attention
-Our Machine Learning experiment revealed the *nature* of this relationship.
-* **Linear Model Win:** The fact that **Linear Regression** outperformed complex models (like Gradient Boosting) proves that the relationship is direct and proportional.
-* **Interpretation:** We observed a clear **Power Law**. As a nation's "Hard Power" increases exponentially, its global news coverage increases exponentially. There are no complex, hidden non-linear rules—it is a straightforward hierarchy of power.
+### B. The "Shadow" of Wealth (Why GDP was Redundant)
+Crucially, adding GDP to the Military model did not improve performance—it actually slightly hurt it.
+* **Interpretation:** This suggests that GDP is merely a *prerequisite* for Military Power. Wealthy nations build strong militaries, but it is the **Military Capability itself** that drives the attention.
+* **The Lesson:** A rich nation with no military presence (e.g., small wealthy states) receives far less attention than a militarized power.
 
 ### C. Stability Over Fragility
 Contrary to the belief that "bad news travels fast," our data suggests that **Stability** attracts more consistent global attention than Fragility.
@@ -158,9 +167,4 @@ Contrary to the belief that "bad news travels fast," our data suggests that **St
 * Global diplomacy and news cycles prioritize powerful, stable actors over fragile states, likely due to their central role in the global economy and security architecture.
 
 ###  Summary
-If a country wants to increase its global "share of voice," **Economic Wealth (GDP)** and **Military Power** are the decisive factors. Democratic status and internal fragility play a minor secondary role compared to the sheer weight of Hard Power.
-
-### ⚠️ Limitations & Technical Note
-While our analysis provides strong evidence for the dominance of Hard Power, we identified significant **multicollinearity** between our two main predictors:
-* **GDP and Military Power** share a correlation of **0.87**.
-* **Implication:** This indicates that economically wealthy nations almost universally possess strong military capabilities. While we retained both features to test distinct theoretical hypotheses ("Economic Power" vs. "Military Power"), their high overlap means the linear regression model may struggle to statistically disentangle their individual contributions. The "weight" assigned to one versus the other should be interpreted with this redundancy in mind.
+If a country wants to increase its global "share of voice," **Military Power** is the single most decisive factor. Wealth helps build an army, but **Hard Power** is what captures the world's attention.
