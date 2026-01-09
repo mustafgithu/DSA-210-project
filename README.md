@@ -75,6 +75,38 @@ Instead of dropping them (which would bias the "News Frequency" analysis), we im
 * **Fragile States Index (FSI):** Imputed for **Taiwan**, **Hong Kong**, and **Kosovo** by referencing the scores of comparable regional peers (e.g., South Korea, Singapore, and Balkan neighbors).
 * **Military Power:** Imputed for entities missing from the GlobalFirePower index by referencing similar-sized military powers in their region.
 
+### C. Data Processing Pipeline (Step-by-Step)
+To ensure robustness, we did not simply merge raw files. Instead, we created **Intermediate Processed Datasets** by averaging historical data to smooth out yearly anomalies. The data was generated in the following order:
+
+#### 1. Generating Intermediate "Average" Files
+Before the final merge, each indicator was processed individually to create a single representative score for each country:
+* **Step 1: GDP Processing (`gdp_avg`)**
+    * *Input:* Raw World Bank Data (Yearly columns).
+    * *Action:* Filtered for the last decade (2011-2020) and calculated the mean.
+    * *Output:* A cleaned list of ~200 countries with their 10-year average economic size.
+* **Step 2: Democracy Processing (`democracy_avg`)**
+    * *Input:* Raw EIU Democracy Index.
+    * *Action:* Averaged scores from 2013-2020 to determine the country's sustained political regime type.
+* **Step 3: Military Processing (`military_avg`)**
+    * *Input:* 8 separate files (2017, 2019, 2020, 2021, 2022, 2023, 2024, 2025).
+    * *Action:* Merged all years and calculated the mean `PowerIndex` to fix outliers (e.g., a country temporarily dropping in rank due to data errors).
+* **Step 4: FSI Processing (`fsi_avg`)**
+    * *Input:* Fragile State Index raw data.
+    * *Action:* Averaged the "Total" score over the last available 10 years.
+
+#### 2. The Master Merge Sequence
+Once the intermediate datasets were ready, we built the final dataset using the **News Frequency** list as the "Backbone" to ensure we only kept countries relevant to our text analysis:
+1.  **Base:** Start with `News Frequency` (Entities with >1,000 mentions).
+2.  **Merge 1:** Attach `gdp_avg` (Inner Join).
+3.  **Merge 2:** Attach `democracy_avg` (Inner Join).
+4.  **Merge 3:** Attach `military_avg` (Inner Join).
+5.  **Merge 4:** Attach `fsi_avg` (Left Join).
+    * *Note:* A Left Join was used here because some high-visibility entities (like Taiwan) are missing from the FSI source but needed to be kept for manual imputation.
+
+#### 3. Final Output
+* **File:** `final_complete_dataset.csv`
+* **Content:** A single row per country containing its Log-Frequency, Average GDP, Average Democracy Score, Average Military Power, and Imputed FSI Score.
+
 # Analysis & Results
 ## 1. Visual Analysis
 Below are the key visualizations illustrating the relationship between national indicators and global news coverage.
